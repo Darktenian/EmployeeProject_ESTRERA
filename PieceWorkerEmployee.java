@@ -43,7 +43,7 @@ public class PieceWorkerEmployee {
     }
 
     public void setTotalPiecesFinished(int totalPiecesFinished) {
-        this.totalPiecesFinished = totalPiecesFinished < 0 ? 0 : totalPiecesFinished;
+        this.totalPiecesFinished = Math.max(totalPiecesFinished, 0);
     }
 
     public double getRatePerPiece() {
