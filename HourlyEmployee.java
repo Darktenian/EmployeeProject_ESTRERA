@@ -69,7 +69,7 @@ public class HourlyEmployee {
 
     @Override
     public String toString() {
-        return String.format("HourlyEmplotee [ID: %d, Name: %s, Hours: %.2f, Rate: ₱%.2f Total Salary: ₱%.2f]",
+        return String.format("HourlyEmployee [ID: %d, Name: %s, Hours: %.2f, Rate: ₱%.2f Total Salary: ₱%.2f]",
                 empID, empName, totalHoursWorked, ratePerHour, computeSalary());
     }
 }
