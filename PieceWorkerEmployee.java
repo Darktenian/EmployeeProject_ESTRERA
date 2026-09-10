@@ -3,64 +3,71 @@ package version1;
 public class PieceWorkerEmployee {
     private int empID;
     private String empName;
-    private int totalPieceFinished;
+    private int totalPiecesFinished;
     private double ratePerPiece;
 
     public PieceWorkerEmployee() {
-        this(0, "N/A", 0, 0.0f);
+        this(0, "N/A", 0, 0.0);
     }
+
     public PieceWorkerEmployee(int empID, String empName) {
-        this(empID, empName, 0, 0.0f);
+        this(empID, empName, 0, 0.0);
     }
-    public PieceWorkerEmployee(int empID, String empName, int totalPieceFinished, double ratePerPiece ) {
+
+    public PieceWorkerEmployee(int empID, String empName, int totalPiecesFinished, double ratePerPiece) {
         setEmpID(empID);
         setEmpName(empName);
-        setTotalPieceFinished(totalPieceFinished);
+        setTotalPiecesFinished(totalPiecesFinished);
         setRatePerPiece(ratePerPiece);
     }
 
-
-
-    // Area for Getters & Setters :3
-
     public int getEmpID() {
-    return empID;
+        return empID;
     }
+
     public void setEmpID(int empID) {
         this.empID = empID;
     }
+
     public String getEmpName() {
         return empName;
     }
+
     public void setEmpName(String empName) {
         this.empName = empName != null ? empName : "N/A";
     }
-    public int getTotalPieceFinished() {
-        return totalPieceFinished;
-    }
-    public void setTotalPieceFinished(int totalPieceFinished) {
-        this.totalPieceFinished = Math.max(totalPieceFinished, 0);
+
+    public int getTotalPiecesFinished() {
+        return totalPiecesFinished;
     }
 
-    private void setRatePerPiece(double ratePerPiece) {
+    public void setTotalPiecesFinished(int totalPiecesFinished) {
+        this.totalPiecesFinished = totalPiecesFinished < 0 ? 0 : totalPiecesFinished;
     }
 
     public double getRatePerPiece() {
         return ratePerPiece;
     }
+
+    public void setRatePerPiece(double ratePerPiece) {
+        this.ratePerPiece = ratePerPiece < 0 ? 0 : ratePerPiece;
+    }
+
     public double computeSalary() {
-        double basePay = totalPieceFinished * ratePerPiece;
-        int bonusGroups = totalPieceFinished / 100;
+        double basePay = totalPiecesFinished * ratePerPiece;
+        int bonusGroups = totalPiecesFinished / 100; // floor division for complete hundreds
         double bonusPay = bonusGroups * (10 * ratePerPiece);
         return basePay + bonusPay;
     }
-    public void displayPieceWorkerEmployee () {
-        System.out.print("ID: %d | Name: %s | Pieces Finished: %d | Rate: ₱%.2f/hr%n", empID, empName, totalPieceFinished, ratePerPiece);
+
+    public void displayPieceWorkerEmployee() {
+        System.out.printf("ID: %d | Name: %s | Pieces Finished: %d | Rate/Piece: ₱%.2f%n",
+                empID, empName, totalPiecesFinished, ratePerPiece);
     }
+
     @Override
     public String toString() {
-        return String.format("PlaceWorkerEmployee [ID: %d, Name: %s, Pieces: %d, Rate: %.2f]",
-                empID, empName, totalPieceFinished, ratePerPiece);
-
+        return String.format("PieceWorkerEmployee [ID: %d, Name: %s, Pieces: %d, Rate: ₱%.2f, Total Salary: ₱%.2f]",
+                empID, empName, totalPiecesFinished, ratePerPiece, computeSalary());
     }
 }
