@@ -21,6 +21,7 @@ public class PieceWorkerEmployee {
         setRatePerPiece(ratePerPiece);
     }
 
+    // Area for Getters & Setters :3
     public int getEmpID() {
         return empID;
     }

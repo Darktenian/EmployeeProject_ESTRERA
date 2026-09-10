@@ -19,6 +19,7 @@ public class CommissionEmployee {
         setTotalSale(totalSale);
     }
 
+
     public int getEmpID() {
         return empID;
     }
